@@ -27,14 +27,6 @@ const cli = new Liftoff({
   v8flags: require('v8flags')
 })
 
-cli.on('require', function (name) {
-  console.log('Requiring external module', name)
-})
-
-cli.on('requireFail', function (name) {
-  console.log('Failed to load external module', name)
-})
-
 cli.launch({
   cwd: argv.cwd,
   configPath: argv.config,

@@ -16,13 +16,18 @@ class CodeManager {
     let output
     try {
       output = childProcess.execSync(`"${pathToScript}" '${JSON.stringify(params)}'`, {cwd: path})
+      if (output == null) {
+        console.error('Failed to pack lambda. Empty output from packer')
+        return
+      }
+
+      output = JSON.parse(output.toString('utf8'))
+      if (output.file == null) {
+        console.error('Missing file path from packer output')
+        return
+      }
     } catch (e) {
       console.log(`Operation failed with ${e}`)
-    }
-
-    if (output == null || output.file == null) {
-      console.error('Failed to pack lambda')
-      return
     }
 
     const filePath = output.file

@@ -11,11 +11,11 @@ class CodeManager {
 
     prepack_cmd = prepack_cmd || 'npm run build'
     const pathToScript = nodePath.resolve(`${__dirname}/pack_lambda.sh`)
-    const params = {path, prepack_cmd}
+    const params = { path, prepack_cmd }
 
     let output
     try {
-      output = childProcess.execSync(`"${pathToScript}" '${JSON.stringify(params)}'`, {cwd: path})
+      output = childProcess.execSync(`"${pathToScript}" '${JSON.stringify(params)}'`, { cwd: path })
       if (output == null) {
         console.error('Failed to pack lambda. Empty output from packer')
         return
@@ -54,13 +54,13 @@ class CodeManager {
 
     const profile = deployment.aws_profile
     if (profile != null) {
-      const credentials = new AWS.SharedIniFileCredentials({profile})
-      AWS.config.update({credentials})
+      const credentials = new AWS.SharedIniFileCredentials({ profile })
+      AWS.config.update({ credentials })
     }
 
     const region = deployment.aws_region
     if (region != null) {
-      AWS.config.update({region})
+      AWS.config.update({ region })
     }
 
     const s3 = new AWS.S3()
@@ -68,7 +68,7 @@ class CodeManager {
     try {
       console.log(`Uploading code.zip to AWS S3`)
 
-      const s3Params = {Bucket: bucket, Key: `${type}/${lambdaName}/code.zip`, Body: fileContent}
+      const s3Params = { Bucket: bucket, Key: `${type}/${lambdaName}/code.zip`, Body: fileContent }
       await s3.putObject(s3Params).promise()
 
       console.log(`Updating lambda source code`)

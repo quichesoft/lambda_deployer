@@ -21,9 +21,8 @@ cd .tmp
 # install dependencies
 npm install --production --silent &>/dev/null
 # check for linux machine
-if [[ "$(uname -s)" != *"Linux"* ]]
-then
-    docker run --rm -v "$PWD":/var/task lambci/lambda:build-nodejs10.x npm rebuild &>/dev/null
+if [[ "$(uname -s)" != *"Linux"* ]]; then
+  docker run --rm -v "$PWD":/var/task lambci/lambda:build-nodejs12.x npm rebuild &>/dev/null
 fi
 
 # cleanup

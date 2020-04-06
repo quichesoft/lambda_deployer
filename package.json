@@ -1,18 +1,17 @@
 {
   "name": "lambda_deployer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Quichesoft",
   "license": "ISC",
   "bin": {
     "lambda_deployer": "./src/bin/cli.js"
   },
   "dependencies": {
-    "aws-sdk": "^2.610.0",
-    "commander": "^4.1.0",
+    "aws-sdk": "^2.653.0",
+    "commander": "^4.1.1",
     "interpret": "^2.0.0",
     "liftoff": "^3.1.0",
-    "lodash": "^4.17.15",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.5",
     "v8flags": "^3.1.3"
   }
 }

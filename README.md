@@ -11,13 +11,19 @@
  - Add deploy section to project **package.json**
  
 ```
-"deployment": { 
-    "aws_bucket": "qs-foo-lambda-code",
-    "aws_profile": "foo",
-    "aws_lambda_function_name": {
-        "test": "api-lambda"
+"deployment": {
+   "test": {
+      "aws_bucket": "my-bucket-name",
+      "aws_profile": "foo",
+      "aws_region": "eu-west-1",
+      "aws_lambda_function_name": "my-function-name"
     },
-    "aws_region": "eu-west-1"
+   "production": {
+      "aws_bucket": "my-bucket-name",
+      "aws_profile": "bar",
+      "aws_region": "ap-southeast-1",
+      "aws_lambda_function_name": "my-function-name"
+    }
 }
 ```
  - Add deploy run commands

@@ -10,12 +10,14 @@ const CodeManager = require('./codeManager')
 function invoke(env) {
   program
     .version('0.0.1')
-    .command('deploy <type>')
+    .command('deploy <entry>')
     .option('--cmd <prepack_cmd>', 'Pre-pack command')
     .description('Pack typescript code to code.zip')
-    .action((type, options) => {
-      return CodeManager.deploy(env.cwd, options.prepack_cmd, type)
-    })
+    .action((entry, options) => CodeManager.deploy(
+      env.cwd,
+      options.prepack_cmd,
+      entry
+    ))
 
   program.parse(process.argv)
 }

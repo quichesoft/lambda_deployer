@@ -13,7 +13,7 @@ mkdir -p .tmp
 
 # build lambda
 eval "$PREPACK_CMD" &>/dev/null
-rsync -az build/ .tmp
+rsync -az ./build/ .tmp
 cp package.json .tmp
 cp package-lock.json .tmp
 cd .tmp
